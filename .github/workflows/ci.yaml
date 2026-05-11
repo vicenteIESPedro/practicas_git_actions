@@ -10,11 +10,13 @@ on:
 
 jobs:
   BuildAndTest:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16, 17, 18]
+        os: [ubuntu-latest, ubuntu-slim]
 
+    runs-on: ${{ matrix.os }}
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v6
